@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     /*1:父元素*/
+     .container{
+       position: relative;/*父元素相对定位*/
+       width:856px;/*父元素宽度和高度*/
+       height:480px;
+     }
+     /*2:视频元素*/
+     #v3{
+      position: absolute;/*视频元素*/
+      width:100%;/*宽度高度与父元素一致*/
+      height:100%;
+      z-index:0; 
+     }
+     /*3:画布元素53*/
+     #c3{
+       position: absolute;/*画布元素绝对定位*/
+       left:0px;
+       top:0px;
+       z-index: 1;/*在视频上方*/
+       /*background:#fd0;*/
+     }
+  </style>
+</head>
+<body>
+        <h4>弹幕</h4>
+        <!--视频与画布-->
+        <div class="container">
+          <!--画布-->
+          <canvas id="c3" width="856" height="480"></canvas>
+          <!--视频-->
+          <video src="res/x.mp4" id="v3"></video>
+        </div>
+        <!--用户输入区域-->
+        <div class="userDiv">
+          <!--输入框用于输入用户文字-->
+          <input type="text" placeholder="说点什么吗?" id="inputMsg" />
+          <!--下拉列表用于用户文字大小-->
+          <select  id="inputFont">
+            <option value="12px">--请选择--</option>
+            <option value="22px">--中号--</option>
+            <option value="32px">--大号--</option>
+          </select>
+          <!--下拉列表用于用户输入文字颜色-->
+          <select  id="inputColor">
+            <option value="#000">--请选择--</option>
+            <option value="#f00">红色</option>
+            <option value="#00f">蓝色</option>
+          </select>
+          <!--发送按钮-->
+          <input type="button" value="发送" id="inputBtn" />
+        </div>
+        <!--调用程序需要二个js文件-->
+        <script src="js/main.js">主管</script>
+        <script src="js/msg.js">弹幕</script>
+</body>
+</html>
