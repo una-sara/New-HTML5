@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <h4>01_video.html</h4>
+    <video id="v3" src="res/x.mp4" 
+    preload="metadata" controls>
+      您的浏览器版本太低，请升级!!
+    </video>
+    <button onclick="vplay()">播放</button>
+    <button onclick="vpause()">暂停</button>
+    <script>
+      //1:音量
+      var v3 = document.getElementById("v3");
+      v3.volume = 0.2;
+      //5倍速播放  10:48
+      //v3.playbackRate = 5;
+      //v3.playbackRate = 0.2;
+      function vplay(){
+        v3.play();
+      }
+      function vpause(){
+        v3.pause();
+      }
+    </script>
+</body>
+</html>

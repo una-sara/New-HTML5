@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     /*1:修改body背景*/
+     body{
+       background-color: #fff;
+       text-align: center
+     }
+     /*2:父元素*/
+     .container{
+       position: relative;
+     }
+     /*3:按钮元素*/
+     #ctrl{
+       position: absolute; /*子元素绝对定位*/
+       left:50%;           /*子元素居中*/
+       top:50%;
+       margin-top:-60px;   /*宽高减一半*/
+       margin-left:-60px;
+     }
+     /*4:拉伸按钮图片120*120*/
+     #ctrl img{
+       width:120px;
+       height:120px;
+     }
+  </style>
+</head>
+<body>
+    <h3>02_video_exam.html</h3>
+    <!--1:外层父元素-->
+    <div class="container">
+     <!--2:视频区域-->
+     <video src="res/x.mp4" id="v3"></video>
+     <!--3:广告区域-->
+     <!--4:按钮区域-->
+     <a href="#" id="ctrl">
+        <img src="res/play.png">
+     </a>
+    </div>
+  <script>
+  //(1)为视频元素绑定鼠标离开与移入事件 
+  //  鼠标移入视频区域显示图片 res/play.png
+  //  鼠标移出视频区域隐藏图片
+  //1.1:获取完成此任务中所需所有元素
+ var container = document.querySelector(".container");
+ var ctrl = document.getElementById("ctrl");
+ var img = document.querySelector("#ctrl img");
+ var v3 = document.getElementById("v3");
+  //1.2:为父元素绑定鼠标移入离开事件
+  //1.3:移入显示  移出隐藏
+  container.onmouseenter = function(){
+    ctrl.style.display = "block";
+  }
+  container.onmouseleave = function(){
+    ctrl.style.display = "none";
+  }
+  //(2)为图片绑定点击事件 56
+  //  播放视频与暂停播放视频切换
+  //2.1:获取按钮元素并且为其绑定点击事件
+  ctrl.onclick = function(event){
+  //2.2:阻止事件默认行为 a image submit button
+  event.preventDefault();
+  //2.3:播放视频并且切换图片
+  if(v3.paused){
+   v3.play();
+   img.src = "res/pause.png";
+  }else{
+   v3.pause();
+   img.src = "res/play.png"; 
+  }
+  }
+  //(3)视频暂停播放时显示广告，如果播放时隐藏广告
+  </script>
+</body>
+</html>
