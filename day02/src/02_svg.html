@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    svg{background: #ddd}
+  </style>
+</head>
+<body>
+  <svg id="s3" width="500" height="400">
+   <!--circle cx="250" cy="200" r="100" fill="blue" stroke="red" fill-opacity="0.5" stroke-opacity="0.3">
+   </circle-->   
+  </svg>
+  <script>
+     //动态创建circle添加画布
+     //1:获取svg画布 id="s3"
+     var s3 = document.getElementById("s3");
+     
+     //2:创建圆形circle
+     var c = document.createElementNS("http://www.w3.org/2000/svg",
+     "circle");
+     //3:为圆形添加属性 r cx cy fill
+     c.setAttribute("r",50);
+     c.setAttribute("cx",100);
+     c.setAttribute("cy",100);
+     c.setAttribute("fill","#00f");
+     //4:将圆添加画布
+     s3.appendChild(c);
+  </script>
+</body>
+</html>

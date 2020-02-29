@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    canvas{background: #ddd}
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    //功能:绘制二架小飞机
+    //小飞机1 每次旋转 15;小飞机2 每次旋转30
+    //由于画布绘制两架小飞机
+    //绘制之前先保存/绘制之后再恢复 13
+
+    //1:创建图片下载图并且为图片绑定onload事件
+    var p3 = new Image();
+    p3.src = "res/p3.png"
+    p3.onload = function(){
+     //2:创建二个变量deg1 deg2 分别保存两架小飞机
+     //  旋转角度
+     var deg1 = 0;//小飞机1累加角度
+     var deg2 = 0;//小飞机2累加角度
+     //3:创建定时器 200
+     setInterval(()=>{
+      //4:绘制小飞机1[保存/画[原点/角度/旋转/绘制]/恢复]
+      ctx.save(); //保存画笔状态
+      deg1+=15;   //第一架小飞机手工累加角度
+      ctx.translate(100,200);      //原点
+      ctx.rotate(deg1*Math.PI/180);//旋转
+      ctx.drawImage(p3,-100,-50);//以自己为中心
+      ctx.restore();//恢复画笔状态
+      //5:绘制小飞机2[保存/画[原点/角度/旋转/绘制]/恢复]
+      ctx.save(); // 保存状态
+      deg2+=30;   // 累加旋转角度
+      ctx.translate(350,200);  //移动原点右上角
+      ctx.rotate(deg2*Math.PI/180);//旋转
+      ctx.drawImage(p3,-100,-50);//绘制
+      ctx.restore();             //恢复
+     },200)
+    }      
+  </script>
+</body>
+</html>

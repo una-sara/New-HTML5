@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     /*父元素相对定位*/
+     .container{
+       position: relative;/*相对定位*/
+       width: 856px;      /*父元素宽度高度*/
+       height:480px;
+     }
+     /*子元素绝对定位*/
+     #v3{
+       position: absolute;/*视频区域绝对定位*/
+       width:100%;        /*宽度填满父元素*/
+       height:100%;
+       z-index: 0;        /*在画布底下*/
+     }
+     #c3{
+      position: absolute;/*画布*/
+      left:0px;          /*画布位置*/
+      top:0px;
+      z-index: 1;        /*画布上视频上方*/
+     }
+  </style>
+</head>
+<body>
+      <h1>弹幕</h1>
+      <!--最外层父元素:定位-->
+      <div class="container">
+          <!--画布-->
+          <canvas id="c3" width="856" height="480"></canvas>
+          <!--视频-->
+          <video src="res/x.mp4" id="v3" controls></video>
+      </div>
+      <!--输入选择区域-->
+      <div class="userDiv">
+         <!--输入框用于输入文字-->
+         <input type="text" id="inputMsg" />
+         <!--下拉列表保存文字大小-->
+         <select id="inputFont">
+            <option value="12px">--请选择--</option>
+            <option value="22px">22号</option>
+            <option value="32px">32号</option>
+         </select>
+         <select id="inputColor">
+            <option value="#f00">红色</option>
+            <option value="#00f">蓝色</option>
+            <option value="#000">黑色</option>
+         </select>
+         <!--发送文字按钮-->
+         <input type="button" value="发送" id="inputBtn"/>
+      </div>
+      <!--main.js 游戏入口文件-->
+      <script src="js/main.js"></script>
+      <!--弹幕文件-->
+      <script src="js/msg.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   body{text-align: center}
+   canvas{background: #ddd}
+  </style>
+</head>
+<body>
+   <canvas id="c3" width="500" height="400"></canvas>
+   <script>
+     var c3 = document.getElementById("c3");
+     var ctx = c3.getContext("2d");
+
+     //功能一:将图片 res/p3.png 绘制画布左上角
+     //1:创建图片对象
+     var p3 = new Image();
+     //2:下载图片
+     p3.src = "res/p3.png";//花时间 20ms
+     //3:绑定事件(下载成功)
+     p3.onload = function(){//过20ms
+       //4:绘制图片左上角
+       ctx.drawImage(p3,0,0);
+       //5:绘制图片右上角
+       var w = p3.width;
+       var h = p3.height;
+       ctx.drawImage(p3,500-w,0);
+       //6:左下角绘制,10(w)*5(h)小飞机
+       //ctx.drawImage(p3,0,400-5,10,5);
+       //练习:长大 10,5    200,100
+       var w1 = 10; //保存小飞宽度和高度
+       var h1 = 5;
+       var t = setInterval(()=>{
+         ctx.clearRect(0,0,500,400);//清画布
+         w1 += 2;//宽度增长高度增长
+         h1 += 2;
+         ctx.drawImage(p3,0,400-h1,w1,h1);
+         //如果小飞机大于200停止定时器 45
+         if(w1>=200){clearInterval(t)}
+       },200)
+     }
+   </script>
+</body>
+</html>

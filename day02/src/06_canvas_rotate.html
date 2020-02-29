@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   body{text-align: center}
+   canvas{background: #ddd}
+  </style>
+</head>
+<body>
+  <canvas id="c3" width="500" height="400"></canvas>
+  <script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    //功能:旋转 rotate 轴心/累加
+    var p3 = new Image();  //1:创建图片对象
+    p3.src = "res/p3.png"; //2:下载图片
+    p3.onload = function(){//3:事件:下载成功
+      //ctx.drawImage(p3,0,0);//4:绘制没旋转
+      //旋转画笔对象
+      //ctx.rotate(15*Math.PI/180);
+      //ctx.drawImage(p3,0,0);//旋转
+      //ctx.rotate(15*Math.PI/180);
+      //ctx.drawImage(p3,0,0);//30
+      
+      //功能一:以画布中心为轴心旋转
+      //ctx.translate(250,200);//移动原点
+      //ctx.drawImage(p3,0,0);
+      //ctx.rotate(15*Math.PI/180);
+      //ctx.drawImage(p3,0,0);
+      //ctx.rotate(15*Math.PI/180);
+      //ctx.drawImage(p3,0,0);
+
+      //功能二:创建定时器旋转不停旋转小飞机
+      //(1)将原点移动画布中
+      //(2)创建定时器绘制旋转小飞机
+      //以自己为轴心旋转
+      ctx.translate(250,200);   //移动原点
+      var t = setInterval(()=>{ //创建定时器
+         //清除画布:由于改变圆点左上角
+         //-250,-200
+         ctx.clearRect(-250,-200,500,400);
+         ctx.rotate(5*Math.PI/180);//旋转
+         ctx.drawImage(p3,0-100,0-50);
+         //绘制
+      },200)
+    }
+  </script>
+</body>
+</html>
