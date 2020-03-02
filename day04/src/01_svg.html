@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   body{text-align: center}
+   svg{background: #ddd}
+  </style>
+</head>
+<body>
+  <svg id="s3" width="500" height="400">
+    <!--定义渐变对象-->
+    <defs>
+      <!--线性渐变对象-->
+      <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="red"></stop>
+        <stop offset="50%" stop-color="green"></stop>
+        <stop offset="100%" stop-color="yellow"></stop>
+      </linearGradient>
+      <!--定义滤镜 f3-->
+      <filter id="f3">
+        <!--定义模糊滤镜-->
+       <feGaussianBlur stdDeviation="5">
+       </feGaussianBlur>
+      </filter>
+    </defs>
+    <!--将模糊滤镜定义文本-->
+    <text font-size="30" x="30" y="50">
+      亮新买豪华版五菱神车
+    </text>
+    <text font-size="30" x="30" y="90" filter="url(#f3)">
+      东哥丐版幻影
+    </text>
+
+
+    <!--应用渐变对象-->
+    <rect x="0" y="0" width="270" height="10" fill="url(#g3)"></rect>
+    <!--折线-->
+    <polyline points="250,200 300,200 300,300 250,200" fill="#ddd" stroke="#f00"></polyline>
+    <!--五角星-->
+    <polyline stroke="#f00" fill="#ddd"
+    points="300,350 375,350 300,395 350,315 350,395 300,350">
+    </polyline>
+  </svg>
+</body>
+</html>
