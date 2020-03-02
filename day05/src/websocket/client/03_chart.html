@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="socket.io.js"></script>
+</head>
+<body>
+     <h4>多对多聊天室-03_chart.html</h4>
+     <input type="text" id="inputMsg" />
+     <button id="inputBtn">发送</button>
+     <div id="msg">
+     </div>
+     <script>
+       //1:连接聊天室
+       var clientSocket = io("ws://127.0.0.1:4000");
+       //功能一:新用户加入服务器广播 enter
+       clientSocket.on("enter",(data)=>{
+        //2.1:创建div
+        var div = document.createElement("div")
+        //2.2:将服务器广播消息保存div中间
+        div.innerHTML = data;
+        //2.3:文字颜色设置红色
+        div.style.color = "#f00";
+        //2.4:将div追加msg最后一个子元素
+        var msg = document.getElementById("msg")
+        msg.appendChild(div);
+       })
+       //功能二:发送一份信息给服务器
+       //3.1:获取用户输入框与按钮 
+       var txt = document.getElementById("inputMsg");
+       var btn = document.getElementById("inputBtn");
+       //3.2:为按钮添加点击事件
+       btn.onclick = function(){
+        //3.3：将内容发送服务器
+        clientSocket.emit("message",txt.value);
+       }
+       //功能三:接收其它用户发送信息
+       clientSocket.on("list",(data)=>{
+         //4.1:接收客户信息div颜色蓝色追加
+        var div = document.createElement("div")
+        div.innerHTML = data;
+        div.style.color = "#00f";
+        var msg = document.getElementById("msg")
+        msg.appendChild(div);
+       })
+       //功能四:服务器广播指定用户离开 15:40
+       clientSocket.on("leave",(data)=>{
+       var div = document.createElement("div")
+       div.innerHTML = data;
+       div.style.color = "#f0f";
+       var msg = document.getElementById("msg")
+       msg.appendChild(div)
+       })
+     </script>
+</body>
+</html>

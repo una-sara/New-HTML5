@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+     <h4>06.html</h4>
+     <!--文字提示-->
+     请输入数值完成累加和
+     <!--输入框-->
+     <input type="text" id="num1" /> <br>
+     <!--按钮-->
+     <input type="button" value="计算" id="btn"/>
+     <!--显示结果区域-->
+     <div id="msg">
+     </div>
+     <script>
+  //1:获取所有元素
+  var num1 = document.getElementById("num1");
+  var btn = document.getElementById("btn");
+  var msg = document.getElementById("msg");
+  //2:为按钮绑定点击事件
+  btn.onclick = function(){
+   //3:获取用户输入内容
+   var n = num1.value;
+   if(!n){
+     alert("请输入要计算数值");
+     return;
+   }
+   //4:创建Worker线程   9:27
+   var w = new Worker("01.js");
+   //5:将用户输入内容发送06.js
+   w.postMessage(n);
+   //6:接收06.js返回数据
+   w.onmessage = function(event){
+     //7:显示msg元素中间
+     msg.innerHTML = event.data;
+   }
+  }
+      </script>
+</body>
+</html>

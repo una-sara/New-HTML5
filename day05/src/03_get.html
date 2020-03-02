@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <h4>03_get.html 获取数据</h4>
+    <script>
+      //获取数据个数
+      var size = sessionStorage.length;
+      console.log("数据个数:"+size);
+      size = localStorage.length;
+      console.log("数据个数"+size)
+      //获取数据内容
+      var val = sessionStorage.getItem("fa1");
+      console.log(val);
+      sessionStorage.removeItem("fa1")
+      //sessionStorage.clear();
+      //localStorage.clear();
+    </script>
+</body>
+</html>
